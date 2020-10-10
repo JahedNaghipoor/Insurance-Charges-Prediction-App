@@ -2,7 +2,7 @@ from pycaret.regression import load_model, predict_model
 import streamlit as st
 import pandas as pd
 
-model = load_model('deployment_28042020')
+model = load_model('deployment')
 
 def predict(model, input_df):
     predictions_df = predict_model(estimator=model, data=input_df)
@@ -44,13 +44,8 @@ def run():
         st.success('The output is {}'.format(output))
 
     if add_selectbox == 'Batch':
+        st.write("Not developed")
 
-        file_upload = st.file_uploader("Upload csv file for predictions", type=["csv"])
-
-        if file_upload is not None:
-            data = pd.read_csv(file_upload)
-            predictions = predict_model(estimator=model,data=data)
-            st.write(predictions)
 
 if __name__ == '__main__':
     run()
